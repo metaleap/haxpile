@@ -1,0 +1,32 @@
+name:                haxpile
+version:             0.1.0.0
+homepage:            https://github.com/metaleap/haxpile
+license:             GPL
+license-file:        LICENSE
+author:              metaleap
+maintainer:          metaleap@mailbox.org
+copyright:           Phil Schumann
+category:            Misc
+build-type:          Simple
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+library
+    default-language:    Haskell2010
+    ghc-options:         -j4 -Wall -O2
+    hs-source-dirs:      src
+    build-depends:
+        haxbase,
+        base
+    exposed-modules:
+        Hxp.ADT
+
+executable haxpiler
+    default-language:    Haskell2010
+    ghc-options:         -j4 -Wall -O2 -threaded -rtsopts -with-rtsopts=-N4
+    hs-source-dirs:      src
+    main-is:             @Main.hs
+    build-depends:
+        haxbase, haxpile,
+        base
+    other-modules:

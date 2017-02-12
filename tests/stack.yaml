@@ -1,0 +1,12 @@
+resolver: ghc-8.0.2
+
+packages:
+- '../../haxbase'
+- '..'
+- '.'
+
+dump-logs: all
+install-ghc: true
+compiler-check: newer-minor
+allow-newer: true
+allow-different-user: true
