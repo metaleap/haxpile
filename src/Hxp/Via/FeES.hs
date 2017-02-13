@@ -1,4 +1,4 @@
-module Hxp.GHC.FeES where
+module Hxp.Via.FeES where
 
 import qualified DriverPhases
 import qualified GhcMonad
@@ -12,6 +12,6 @@ frontendPlugin =
 ecmaScript :: [String]  ->  [(String , Maybe DriverPhases.Phase)]  ->  GhcMonad.Ghc ()
 ecmaScript flags args =
     let ($~) f a = GhcPlugins.liftIO $ f a
-    in putStrLn$~ error$ "TODO!"
+    in putStrLn$~ (error "TODO!")
     >> print$~ flags
     >> print$~ args

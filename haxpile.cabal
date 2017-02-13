@@ -19,5 +19,5 @@ library
     haxbase,
     base, Cabal, ghc
   exposed-modules:
-    Hxp.Setup.Cabal,
+    Hxp.Via.CabalSetup, Hxp.Via.FeES,
     Hxp.ADT

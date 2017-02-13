@@ -9,6 +9,3 @@ install-ghc: true
 compiler-check: newer-minor
 allow-newer: true
 allow-different-user: true
-
-explicit-setup-deps:
-  "*": true
