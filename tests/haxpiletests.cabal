@@ -10,12 +10,16 @@ category:            Misc
 build-type:          Custom
 cabal-version:       >=1.10
 
+custom-setup
+  setup-depends:
+    base, haxpile
+
 library
-    default-language:    Haskell2010
-    ghc-options:         -ddump-stg -j4 -Wall -O2
-    hs-source-dirs:      src
-    build-depends:
-        haxbase, haxpile,
-        base
-    exposed-modules:
-        HxpT.T01_PrimAdd
+  default-language:    Haskell2010
+  ghc-options:         -j2 -O0
+  hs-source-dirs:      src
+  build-depends:
+    haxbase, haxpile,
+    base
+  exposed-modules:
+    HxpT.T01_PrimAdd
