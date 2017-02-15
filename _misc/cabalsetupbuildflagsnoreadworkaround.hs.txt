@@ -1,0 +1,14 @@
+-- newtype CabalCfgBuildFlags = Readable CabalCfg.BuildFlags deriving Read
+--- All this just a SILLY WORKAROUND for CabalCfg.BuildFlags instancing `Show` but not `Read`
+-- data CabalCfgBuildFlags
+--     = CloneForRead {
+--         buildProgramPaths :: [(String , FilePath)],
+--         buildProgramArgs :: [(String , [String])],
+--         buildDistPref    :: CabalCfg.Flag FilePath,
+--         buildVerbosity   :: CabalCfg.Flag CabalVrb.Verbosity,
+--         buildNumJobs     :: CabalCfg.Flag (Maybe Int),
+--         buildArgs :: [String]
+--     } deriving (Read , Show)
+-- storeCfgFlags :: CabalCfg.BuildFlags -> CabalCfgBuildFlags
+-- storeCfgFlags buildflags = CloneForRead { buildProgramPaths = buildflags-:CabalCfg.buildProgramPaths, buildProgramArgs = buildflags-:CabalCfg.buildProgramArgs, buildDistPref = buildflags-:CabalCfg.buildDistPref, buildVerbosity = buildflags-:CabalCfg.buildVerbosity, buildNumJobs = buildflags-:CabalCfg.buildNumJobs, buildArgs = buildflags-:CabalCfg.buildArgs }
+--- End of SILLY WORKAROUND

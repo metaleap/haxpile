@@ -1,13 +1,26 @@
 ===HOOK-POSTBUILD===
 
-ARGS:["lib:haxpile-apptests"]
+
+>>ARGS:["lib:haxpile-apptests"]
 plus all of the below:
 
 
 ===HOOK-BUILD===
 
 
-PKGDESC:PackageDescription {
+>>BUILDFLAGS:BuildFlags {
+	buildProgramPaths = [],
+	 buildProgramArgs = [("ghc",
+	["-ddump-hi",
+	"-ddump-to-file"])],
+	 buildDistPref = Flag ".stack-work\\dist\\ca59d0ab",
+	 buildVerbosity = Flag Normal,
+	 buildNumJobs = NoFlag,
+	 buildArgs = ["lib:haxpile-apptests"]}
+
+
+
+>>PKGDESC:PackageDescription {
 	package = PackageIdentifier {
 		pkgName = PackageName {
 			unPackageName = "haxpile-apptests"},
@@ -136,7 +149,8 @@ PKGDESC:PackageDescription {
 	 extraDocFiles = []}
 
 
-LOCALBUILDINFO:LocalBuildInfo {
+
+>>LOCALBUILDINFO:LocalBuildInfo {
 	configFlags = ConfigFlags {
 		configPrograms_ = Last' {getLast' = Just []},
 	 configProgramPaths = [("ghc",
@@ -5062,14 +5076,13 @@ InstalledPackageInfo {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "f45560c5fa704ec7e90d52d7b8741032",
+	 abiHash = AbiHash "f92588557d48a823d56fae97027a4ac7",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
-		exposedName = ModuleName ["HxB"],
+		exposedName = ModuleName ["Base"],
 		 exposedReexport = Nothing},
 	ExposedModule {
-		exposedName = ModuleName ["HxB",
-		"Dbg"],
+		exposedName = ModuleName ["Dbg"],
 		 exposedReexport = Nothing}],
 	 hiddenModules = [],
 	 trusted = False,
@@ -5115,7 +5128,7 @@ InstalledPackageInfo {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "9dd6ee353410375d543ce21a6227deba",
+	 abiHash = AbiHash "662cba34a870ab8a34feba3c178088ff",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
 		exposedName = ModuleName ["Hxp",
@@ -10386,14 +10399,13 @@ fromList [(Version {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "f45560c5fa704ec7e90d52d7b8741032",
+	 abiHash = AbiHash "f92588557d48a823d56fae97027a4ac7",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
-		exposedName = ModuleName ["HxB"],
+		exposedName = ModuleName ["Base"],
 		 exposedReexport = Nothing},
 	ExposedModule {
-		exposedName = ModuleName ["HxB",
-		"Dbg"],
+		exposedName = ModuleName ["Dbg"],
 		 exposedReexport = Nothing}],
 	 hiddenModules = [],
 	 trusted = False,
@@ -10446,7 +10458,7 @@ fromList [(Version {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "9dd6ee353410375d543ce21a6227deba",
+	 abiHash = AbiHash "662cba34a870ab8a34feba3c178088ff",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
 		exposedName = ModuleName ["Hxp",
@@ -11779,12 +11791,3 @@ SpecificPackageDB "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d
  relocatable = False}
 
 
-BUILDFLAGS:BuildFlags {
-	buildProgramPaths = [],
-	 buildProgramArgs = [("ghc",
-	["-ddump-hi",
-	"-ddump-to-file"])],
-	 buildDistPref = Flag ".stack-work\\dist\\ca59d0ab",
-	 buildVerbosity = Flag Normal,
-	 buildNumJobs = NoFlag,
-	 buildArgs = ["lib:haxpile-apptests"]}
