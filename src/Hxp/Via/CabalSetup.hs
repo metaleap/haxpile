@@ -5,6 +5,7 @@ module Hxp.Via.CabalSetup
 where
 
 import Base
+import qualified Dbg
 
 import qualified Distribution.Package as CabalPkg
 import qualified Distribution.PackageDescription as CabalPkgD
@@ -48,26 +49,29 @@ skipBuild cfgfilename ghcargs =
 
 
 invokeHook :: FilePath  ->  [String]  ->  DumpForFrontend  ->  IO ()
-invokeHook _cfgfilename userghcargs cabaldump@(FromCabal _maybeargs buildflags pkgdesc _localbuildinfo) =
+invokeHook cfgfilename userghcargs cabaldump@(FromCabal _maybeargs buildflags pkgdesc localbuildinfo) =
     System.Environment.getArgs >>= \cmdargs
     -> System.Directory.getCurrentDirectory >>= \curdir
     -> let dumpfilepath =
-            curdir </> (dp $buildflags-:CabalCfg.buildDistPref) </> ".hxp" </> "cabalsetupbuildinfo.cabaldump" where
+            curdir </> (dp $buildflags-:CabalCfg.buildDistPref) </> ".hxp" </> "cabalsetupbuildinfo.dump" where
             dp CabalCfg.NoFlag = drop 11 ("" -|= Data.List.find (Data.List.isPrefixOf "--builddir=") cmdargs)
             dp (CabalCfg.Flag dir) = dir
             _pkgname = pkgdesc-:CabalPkgD.package-:CabalPkg.pkgName-:CabalPkg.unPackageName
     in System.Directory.createDirectoryIfMissing False (System.FilePath.takeDirectory dumpfilepath)
-    *> System.IO.writeFile dumpfilepath (show cabaldump)
-    *> putStrLn "WOOOW"
-    *> let ghcargs = ghcCmdArgs userghcargs ([] -|= Data.List.lookup "ghc" (buildflags-:CabalCfg.buildProgramArgs))
-    in print ghcargs
-    *> putStrLn "WOOOW"
+    *> let serialized = show cabaldump
+    in System.IO.writeFile dumpfilepath serialized
+    *> System.IO.writeFile (dumpfilepath++".pretty") (Dbg.autoIndent serialized)
+    *> let
+        ghcargs = ghcCmdArgs cfgfilename dumpfilepath userghcargs ([] -|= Data.List.lookup "ghc" (buildflags-:CabalCfg.buildProgramArgs))
+        ghcpath = "ghc" -|= Data.List.lookup "ghc" (localbuildinfo-:CabalBld.configFlags-:CabalCfg.configProgramPaths)
+    in System.IO.hFlush System.IO.stdout
+    *> System.Process.callProcess "stack" ("ghc" : "--" : ghcargs)
 
 
 
-ghcCmdArgs :: [String]  ->  [String]  ->  [String]
-ghcCmdArgs userargs _buildflagargs =
+ghcCmdArgs :: FilePath  ->  FilePath  ->  [String]  ->  [String]  ->  [String]
+ghcCmdArgs cfgfilename dumpfilepath userargs _buildflagargs =
     --  _buildflagargs is like ["-ddump-hi","-ddump-to-file"] --- unnecessary for our --frontend run
     let defargs = ["-O2","-j2"]
     in (userargs <?> defargs) ++
-        ["--frontend", "Hxp.Via.Frontend", "-ffrontend-opt", "foo"]
+        ["--frontend", "Hxp.Via.Frontend", "-ffrontend-opt", cfgfilename, "-ffrontend-opt", dumpfilepath]

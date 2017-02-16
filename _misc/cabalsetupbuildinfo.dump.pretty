@@ -1,14 +1,4 @@
-===HOOK-POSTBUILD===
-
-
->>ARGS:["lib:haxpile-apptests"]
-plus all of the below:
-
-
-===HOOK-BUILD===
-
-
->>BUILDFLAGS:BuildFlags {
+FromCabal (Just ["lib:haxpile-apptests"]) (BuildFlags {
 	buildProgramPaths = [],
 	 buildProgramArgs = [("ghc",
 	["-ddump-hi",
@@ -16,11 +6,7 @@ plus all of the below:
 	 buildDistPref = Flag ".stack-work\\dist\\ca59d0ab",
 	 buildVerbosity = Flag Normal,
 	 buildNumJobs = NoFlag,
-	 buildArgs = ["lib:haxpile-apptests"]}
-
-
-
->>PKGDESC:PackageDescription {
+	 buildArgs = ["lib:haxpile-apptests"]}) (PackageDescription {
 	package = PackageIdentifier {
 		pkgName = PackageName {
 			unPackageName = "haxpile-apptests"},
@@ -57,7 +43,7 @@ plus all of the below:
 		versionBranch = [1,
 		0,
 		0,
-		2],
+		3],
 		 versionTags = []}))),
 	Dependency (PackageName {
 		unPackageName = "haxpile"}) (IntersectVersionRanges AnyVersion (ThisVersion (Version {
@@ -82,7 +68,9 @@ plus all of the below:
 		 defaultSetupDepends = False}),
 	 library = Just (Library {
 		exposedModules = [ModuleName ["HxpT",
-		"T01_PrimAdd"]],
+		"T01_PrimAdd"],
+		ModuleName ["HxpT",
+		"T02_FacRec"]],
 		 reexportedModules = [],
 		 requiredSignatures = [],
 		 exposedSignatures = [],
@@ -113,7 +101,8 @@ plus all of the below:
 			 installIncludes = [],
 			 options = [(GHC,
 			["-j2",
-			"-O0"])],
+			"-O0",
+			"-ddump-stg"])],
 			 profOptions = [],
 			 sharedOptions = [],
 			 customFieldsBI = [],
@@ -129,7 +118,7 @@ plus all of the below:
 				versionBranch = [1,
 				0,
 				0,
-				2],
+				3],
 				 versionTags = []}))),
 			Dependency (PackageName {
 				unPackageName = "haxpile"}) (IntersectVersionRanges AnyVersion (ThisVersion (Version {
@@ -146,11 +135,7 @@ plus all of the below:
 	 dataDir = "",
 	 extraSrcFiles = [],
 	 extraTmpFiles = [],
-	 extraDocFiles = []}
-
-
-
->>LOCALBUILDINFO:LocalBuildInfo {
+	 extraDocFiles = []}) (LocalBuildInfo {
 	configFlags = ConfigFlags {
 		configPrograms_ = Last' {getLast' = Just []},
 	 configProgramPaths = [("ghc",
@@ -211,10 +196,10 @@ plus all of the below:
 	SimpleUnitId (ComponentId "base-4.9.1.0")),
 	(PackageName {
 		unPackageName = "haxbase"},
-	SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU")),
+	SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM")),
 	(PackageName {
 		unPackageName = "haxpile"},
-	SimpleUnitId (ComponentId "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"))],
+	SimpleUnitId (ComponentId "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"))],
 	 configConfigurationsFlags = [],
 	 configTests = Flag False,
 	 configBenchmarks = Flag False,
@@ -840,7 +825,7 @@ LibComponentLocalBuildInfo {
 			1,
 			0],
 			 versionTags = []}}),
-	(SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"),
+	(SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"),
 	PackageIdentifier {
 		pkgName = PackageName {
 			unPackageName = "haxbase"},
@@ -848,9 +833,9 @@ LibComponentLocalBuildInfo {
 			versionBranch = [1,
 			0,
 			0,
-			2],
+			3],
 			 versionTags = []}}),
-	(SimpleUnitId (ComponentId "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"),
+	(SimpleUnitId (ComponentId "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"),
 	PackageIdentifier {
 		pkgName = PackageName {
 			unPackageName = "haxpile"},
@@ -860,11 +845,15 @@ LibComponentLocalBuildInfo {
 			0,
 			0],
 			 versionTags = []}})],
-	 componentUnitId = SimpleUnitId (ComponentId "haxpile-apptests-0.1.0.0-LwFh6duZW19L5zglSFlHJU"),
-	 componentCompatPackageKey = "haxpile-apptests-0.1.0.0-LwFh6duZW19L5zglSFlHJU",
+	 componentUnitId = SimpleUnitId (ComponentId "haxpile-apptests-0.1.0.0-IEAVXvYQDKWAvIZ0PQKud4"),
+	 componentCompatPackageKey = "haxpile-apptests-0.1.0.0-IEAVXvYQDKWAvIZ0PQKud4",
 	 componentExposedModules = [ExposedModule {
 		exposedName = ModuleName ["HxpT",
 		"T01_PrimAdd"],
+		 exposedReexport = Nothing},
+	ExposedModule {
+		exposedName = ModuleName ["HxpT",
+		"T02_FacRec"],
 		 exposedReexport = Nothing}],
 	 componentPackageRenaming = fromList []},
 [])],
@@ -5053,7 +5042,7 @@ InstalledPackageInfo {
 	 haddockInterfaces = ["C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\ghc-8.0.2\\lib/../doc/html/libraries/ghci-8.0.2\\ghci.haddock"],
 	 haddockHTMLs = ["C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\ghc-8.0.2\\lib/../doc/html/libraries/ghci-8.0.2"],
 	 pkgRoot = Just "C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\ghc-8.0.2\\lib"}),
-(SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"),
+(SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"),
 InstalledPackageInfo {
 	sourcePackageId = PackageIdentifier {
 		pkgName = PackageName {
@@ -5062,10 +5051,10 @@ InstalledPackageInfo {
 			versionBranch = [1,
 			0,
 			0,
-			2],
+			3],
 			 versionTags = []}},
-	 installedUnitId = SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"),
-	 compatPackageKey = "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU",
+	 installedUnitId = SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"),
+	 compatPackageKey = "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM",
 	 license = GPL Nothing,
 	 copyright = "Phil Schumann",
 	 maintainer = "metaleap@mailbox.org",
@@ -5076,7 +5065,7 @@ InstalledPackageInfo {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "f92588557d48a823d56fae97027a4ac7",
+	 abiHash = AbiHash "98eb18e68e3116170c039616236e8448",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
 		exposedName = ModuleName ["Base"],
@@ -5086,26 +5075,27 @@ InstalledPackageInfo {
 		 exposedReexport = Nothing}],
 	 hiddenModules = [],
 	 trusted = False,
-	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"],
-	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU",
+	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"],
+	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
 	 libraryDynDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
-	 dataDir = "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\share\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.2",
-	 hsLibraries = ["HShaxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"],
+	 dataDir = "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\share\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.3",
+	 hsLibraries = ["HShaxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"],
 	 extraLibraries = [],
 	 extraGHCiLibraries = [],
 	 includeDirs = ["C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\include"],
 	 includes = [],
-	 depends = [SimpleUnitId (ComponentId "base-4.9.1.0")],
+	 depends = [SimpleUnitId (ComponentId "base-4.9.1.0"),
+	SimpleUnitId (ComponentId "filepath-1.4.1.1")],
 	 ccOptions = [],
 	 ldOptions = [],
 	 frameworkDirs = [],
 	 frameworks = [],
-	 haddockInterfaces = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.2\\haxbase.haddock"],
-	 haddockHTMLs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.2"],
+	 haddockInterfaces = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.3\\haxbase.haddock"],
+	 haddockHTMLs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.3"],
 	 pkgRoot = Just "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d"}),
-(SimpleUnitId (ComponentId "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"),
+(SimpleUnitId (ComponentId "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"),
 InstalledPackageInfo {
 	sourcePackageId = PackageIdentifier {
 		pkgName = PackageName {
@@ -5116,8 +5106,8 @@ InstalledPackageInfo {
 			0,
 			0],
 			 versionTags = []}},
-	 installedUnitId = SimpleUnitId (ComponentId "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"),
-	 compatPackageKey = "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd",
+	 installedUnitId = SimpleUnitId (ComponentId "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"),
+	 compatPackageKey = "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb",
 	 license = GPL Nothing,
 	 copyright = "Phil Schumann",
 	 maintainer = "metaleap@mailbox.org",
@@ -5128,7 +5118,7 @@ InstalledPackageInfo {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "662cba34a870ab8a34feba3c178088ff",
+	 abiHash = AbiHash "9acb162ce133771eba42eaa0b91c8364",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
 		exposedName = ModuleName ["Hxp",
@@ -5138,29 +5128,41 @@ InstalledPackageInfo {
 	ExposedModule {
 		exposedName = ModuleName ["Hxp",
 		"Via",
-		"FeES"],
+		"Frontend"],
 		 exposedReexport = Nothing},
 	ExposedModule {
 		exposedName = ModuleName ["Hxp",
 		"ADT"],
+		 exposedReexport = Nothing},
+	ExposedModule {
+		exposedName = ModuleName ["Hxp",
+		"Base"],
+		 exposedReexport = Nothing},
+	ExposedModule {
+		exposedName = ModuleName ["Hxp",
+		"ES"],
 		 exposedReexport = Nothing}],
 	 hiddenModules = [],
 	 trusted = False,
-	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"],
-	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd",
+	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"],
+	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
 	 libraryDynDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
 	 dataDir = "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\share\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0",
-	 hsLibraries = ["HShaxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"],
+	 hsLibraries = ["HShaxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"],
 	 extraLibraries = [],
 	 extraGHCiLibraries = [],
 	 includeDirs = ["C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\include"],
 	 includes = [],
 	 depends = [SimpleUnitId (ComponentId "Cabal-1.24.2.0"),
 	SimpleUnitId (ComponentId "base-4.9.1.0"),
+	SimpleUnitId (ComponentId "containers-0.5.7.1"),
+	SimpleUnitId (ComponentId "directory-1.3.0.0"),
+	SimpleUnitId (ComponentId "filepath-1.4.1.1"),
 	SimpleUnitId (ComponentId "ghc-8.0.2"),
-	SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU")],
+	SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"),
+	SimpleUnitId (ComponentId "process-1.4.3.0")],
 	 ccOptions = [],
 	 ldOptions = [],
 	 frameworkDirs = [],
@@ -10375,7 +10377,7 @@ fromList [(Version {
 	versionBranch = [1,
 	0,
 	0,
-	2],
+	3],
 	 versionTags = []},
 [InstalledPackageInfo {
 	sourcePackageId = PackageIdentifier {
@@ -10385,10 +10387,10 @@ fromList [(Version {
 			versionBranch = [1,
 			0,
 			0,
-			2],
+			3],
 			 versionTags = []}},
-	 installedUnitId = SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"),
-	 compatPackageKey = "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU",
+	 installedUnitId = SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"),
+	 compatPackageKey = "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM",
 	 license = GPL Nothing,
 	 copyright = "Phil Schumann",
 	 maintainer = "metaleap@mailbox.org",
@@ -10399,7 +10401,7 @@ fromList [(Version {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "f92588557d48a823d56fae97027a4ac7",
+	 abiHash = AbiHash "98eb18e68e3116170c039616236e8448",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
 		exposedName = ModuleName ["Base"],
@@ -10409,24 +10411,25 @@ fromList [(Version {
 		 exposedReexport = Nothing}],
 	 hiddenModules = [],
 	 trusted = False,
-	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"],
-	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU",
+	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"],
+	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
 	 libraryDynDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
-	 dataDir = "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\share\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.2",
-	 hsLibraries = ["HShaxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU"],
+	 dataDir = "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\share\\x86_64-windows-ghc-8.0.2\\haxbase-1.0.0.3",
+	 hsLibraries = ["HShaxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"],
 	 extraLibraries = [],
 	 extraGHCiLibraries = [],
 	 includeDirs = ["C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\include"],
 	 includes = [],
-	 depends = [SimpleUnitId (ComponentId "base-4.9.1.0")],
+	 depends = [SimpleUnitId (ComponentId "base-4.9.1.0"),
+	SimpleUnitId (ComponentId "filepath-1.4.1.1")],
 	 ccOptions = [],
 	 ldOptions = [],
 	 frameworkDirs = [],
 	 frameworks = [],
-	 haddockInterfaces = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.2\\haxbase.haddock"],
-	 haddockHTMLs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.2"],
+	 haddockInterfaces = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.3\\haxbase.haddock"],
+	 haddockHTMLs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\doc\\haxbase-1.0.0.3"],
 	 pkgRoot = Just "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d"}])]),
 (PackageName {
 	unPackageName = "haxpile"},
@@ -10446,8 +10449,8 @@ fromList [(Version {
 			0,
 			0],
 			 versionTags = []}},
-	 installedUnitId = SimpleUnitId (ComponentId "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"),
-	 compatPackageKey = "haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd",
+	 installedUnitId = SimpleUnitId (ComponentId "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"),
+	 compatPackageKey = "haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb",
 	 license = GPL Nothing,
 	 copyright = "Phil Schumann",
 	 maintainer = "metaleap@mailbox.org",
@@ -10458,7 +10461,7 @@ fromList [(Version {
 	 synopsis = "",
 	 description = "",
 	 category = "Misc",
-	 abiHash = AbiHash "662cba34a870ab8a34feba3c178088ff",
+	 abiHash = AbiHash "9acb162ce133771eba42eaa0b91c8364",
 	 exposed = True,
 	 exposedModules = [ExposedModule {
 		exposedName = ModuleName ["Hxp",
@@ -10468,29 +10471,41 @@ fromList [(Version {
 	ExposedModule {
 		exposedName = ModuleName ["Hxp",
 		"Via",
-		"FeES"],
+		"Frontend"],
 		 exposedReexport = Nothing},
 	ExposedModule {
 		exposedName = ModuleName ["Hxp",
 		"ADT"],
+		 exposedReexport = Nothing},
+	ExposedModule {
+		exposedName = ModuleName ["Hxp",
+		"Base"],
+		 exposedReexport = Nothing},
+	ExposedModule {
+		exposedName = ModuleName ["Hxp",
+		"ES"],
 		 exposedReexport = Nothing}],
 	 hiddenModules = [],
 	 trusted = False,
-	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"],
-	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd",
+	 importDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"],
+	 libraryDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
 	 libraryDynDirs = ["D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\lib\\x86_64-windows-ghc-8.0.2",
 	"C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib"],
 	 dataDir = "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d\\share\\x86_64-windows-ghc-8.0.2\\haxpile-0.1.0.0",
-	 hsLibraries = ["HShaxpile-0.1.0.0-I9yg11EfckoF5KgLnpsdPd"],
+	 hsLibraries = ["HShaxpile-0.1.0.0-GYo0wuEH38i8T7ukf8Milb"],
 	 extraLibraries = [],
 	 extraGHCiLibraries = [],
 	 includeDirs = ["C:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\include"],
 	 includes = [],
 	 depends = [SimpleUnitId (ComponentId "Cabal-1.24.2.0"),
 	SimpleUnitId (ComponentId "base-4.9.1.0"),
+	SimpleUnitId (ComponentId "containers-0.5.7.1"),
+	SimpleUnitId (ComponentId "directory-1.3.0.0"),
+	SimpleUnitId (ComponentId "filepath-1.4.1.1"),
 	SimpleUnitId (ComponentId "ghc-8.0.2"),
-	SimpleUnitId (ComponentId "haxbase-1.0.0.2-I2TLkc639bIDkRghDm41wU")],
+	SimpleUnitId (ComponentId "haxbase-1.0.0.3-83ZdZOn6t3KFL1qCXsvZfM"),
+	SimpleUnitId (ComponentId "process-1.4.3.0")],
 	 ccOptions = [],
 	 ldOptions = [],
 	 frameworkDirs = [],
@@ -11513,7 +11528,7 @@ fromList [(Version {
 		versionBranch = [1,
 		0,
 		0,
-		2],
+		3],
 		 versionTags = []}))),
 	Dependency (PackageName {
 		unPackageName = "haxpile"}) (IntersectVersionRanges AnyVersion (ThisVersion (Version {
@@ -11538,7 +11553,9 @@ fromList [(Version {
 		 defaultSetupDepends = False}),
 	 library = Just (Library {
 		exposedModules = [ModuleName ["HxpT",
-		"T01_PrimAdd"]],
+		"T01_PrimAdd"],
+		ModuleName ["HxpT",
+		"T02_FacRec"]],
 		 reexportedModules = [],
 		 requiredSignatures = [],
 		 exposedSignatures = [],
@@ -11569,7 +11586,8 @@ fromList [(Version {
 			 installIncludes = [],
 			 options = [(GHC,
 			["-j2",
-			"-O0"])],
+			"-O0",
+			"-ddump-stg"])],
 			 profOptions = [],
 			 sharedOptions = [],
 			 customFieldsBI = [],
@@ -11585,7 +11603,7 @@ fromList [(Version {
 				versionBranch = [1,
 				0,
 				0,
-				2],
+				3],
 				 versionTags = []}))),
 			Dependency (PackageName {
 				unPackageName = "haxpile"}) (IntersectVersionRanges AnyVersion (ThisVersion (Version {
@@ -11788,6 +11806,4 @@ SpecificPackageDB "D:\\dev\\hs\\haxpile-apptests\\.stack-work\\install\\6db3355d
  stripLibs = True,
  progPrefix = "",
  progSuffix = "",
- relocatable = False}
-
-
+ relocatable = False})
