@@ -1,4 +1,3 @@
-http://pastebin.com/8ZXuB6sH
 
 -- newtype CabalCfgBuildFlags = Readable CabalCfg.BuildFlags deriving Read
 --- All this just a SILLY WORKAROUND for CabalCfg.BuildFlags instancing `Show` but not `Read`

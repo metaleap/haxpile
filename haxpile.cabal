@@ -13,11 +13,11 @@ extra-source-files:  README.md
 
 library
   default-language:    Haskell2010
-  ghc-options:         -j4 -Wall -O2
+  ghc-options:         -j4 -Wall -O0
   hs-source-dirs:      src
   build-depends:
     haxbase,
-    base, Cabal, containers, directory, filepath, ghc, process
+    base, Cabal, directory, filepath, ghc, process
   exposed-modules:
     Hxp.Via.CabalSetup, Hxp.Via.Frontend,
     Hxp.ADT, Hxp.Base, Hxp.ES

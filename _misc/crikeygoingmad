@@ -1,0 +1,30 @@
+executable haxpile-ghci-shim
+  default-language:    Haskell2010
+  ghc-options:         -O2 -Wall -j4 -threaded -rtsopts -with-rtsopts=-N4
+  hs-source-dirs:      src
+  main-is:             @InvokeFrontend.hs
+  build-depends:
+    base, ghc-paths, process,
+    haxbase
+
+
+
+-- this is the kind of cmdargs we can expect..
+-- ["--interactive","-i","-odir=D:\\dev\\hs\\haxpile-apptests\\.stack-work\\odir",
+-- "-hidir=D:\\dev\\hs\\haxpile-apptests\\.stack-work\\odir","-hide-all-packages",
+-- "-iD:\\dev\\hs\\haxbase\\src","-iD:\\dev\\hs\\haxbase\\.stack-work\\dist\\ca59d0ab\\build\\autogen",
+-- "-iD:\\dev\\hs\\haxbase\\.stack-work\\dist\\ca59d0ab\\build",
+-- "-stubdir=D:\\dev\\hs\\haxbase\\.stack-work\\dist\\ca59d0ab\\build",
+-- "-IC:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\include",
+-- "-LC:\\Users\\roxor\\AppData\\Local\\Programs\\stack\\x86_64-windows\\msys2-20150512\\mingw64\\lib",
+-- "-package-id=base-4.9.1.0","-package-id=filepath-1.4.1.1","-iD:\\dev\\hs\\haxpile-apptests\\src",
+-- "-iD:\\dev\\hs\\haxpile-apptests\\.stack-work\\dist\\ca59d0ab\\build\\autogen",
+-- "-iD:\\dev\\hs\\haxpile-apptests\\.stack-work\\dist\\ca59d0ab\\build",
+-- "-stubdir=D:\\dev\\hs\\haxpile-apptests\\.stack-work\\dist\\ca59d0ab\\build","-iD:\\dev\\hs\\haxpile\\src",
+-- "-iD:\\dev\\hs\\haxpile\\.stack-work\\dist\\ca59d0ab\\build\\autogen",
+-- "-iD:\\dev\\hs\\haxpile\\.stack-work\\dist\\ca59d0ab\\build",
+-- "-stubdir=D:\\dev\\hs\\haxpile\\.stack-work\\dist\\ca59d0ab\\build",
+-- "-package-id=Cabal-1.24.2.0","-package-id=directory-1.3.0.0","-package-id=ghc-8.0.2","-package-id=process-1.4.3.0",
+-- "-iD:\\dev\\hs\\haxpile\\.stack-work\\dist\\ca59d0ab\\build\\hxp-ghci-shim\\hxp-ghci-shim-tmp",
+-- "-j4","-Wall","-j2","-ddump-stg","-j4","-Wall","-j4","-Wall","-rtsopts","-with-rtsopts=-N4","-optP-include",
+-- "-optPD:\\__mstmp\\ghci12760\\cabal_macros.h","-ghci-script=D:\\__mstmp\\ghci12760\\ghci-script"]
