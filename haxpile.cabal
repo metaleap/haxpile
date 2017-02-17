@@ -21,3 +21,12 @@ library
   exposed-modules:
     Hxp.Via.CabalSetup, Hxp.Via.Frontend,
     Hxp.ADT, Hxp.Base, Hxp.ES
+
+executable haxpile-notarepl
+  default-language:    Haskell2010
+  ghc-options:         -O0 -Wall -j4
+  hs-source-dirs:      src
+  main-is:             @InvokeFrontend.hs
+  build-depends:
+    base, directory, filepath, process,
+    haxbase
